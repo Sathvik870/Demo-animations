@@ -1,0 +1,8 @@
+.ease-demo-area {
+    justify-content: flex-start; /* Align box to the left */
+    align-items: center;
+}
+
+.ease-controls {
+    flex-wrap: wrap; /* Allow buttons to wrap to the next line */
+}

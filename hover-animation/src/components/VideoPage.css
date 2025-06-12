@@ -1,0 +1,49 @@
+/* src/components/VideoPage.css */
+
+.video-page-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative; /* Essential for positioning children absolutely */
+  overflow: hidden; /* Prevents scrollbars if video is slightly off */
+  background-color: #000; /* Fallback color if video fails to load */
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Covers the screen without distorting the aspect ratio */
+  z-index: 1; /* Sits behind the content overlay */
+}
+
+.content-overlay {
+  position: relative; /* Sits on top of the video */
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  
+  /* Use flexbox to center the button at the bottom */
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: flex-end;   /* Vertically align to the bottom */
+}
+
+.dynamic-link-button {
+  /* Styling to make the <a> tag look like a button */
+  padding: 15px 30px;
+  margin-bottom: 50px; /* Space from the bottom edge */
+  background-color: #007bff00;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius:100px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.dynamic-link-button:hover {
+  background-color: #0057b300;
+}

@@ -1,0 +1,19 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  min-height: 250px;
+}
+
+.flip-box {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Makes the box a perfect square */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  border-radius: 8px;
+}

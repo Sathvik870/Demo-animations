@@ -8,7 +8,7 @@ body {
 }
 
 /* Main container uses CSS Grid for the two-column layout */
-.app-container {
+.app-container1 {
   display: grid;
   grid-template-columns: 1fr 1fr; /* Two equal columns */
   
@@ -18,19 +18,19 @@ body {
 }
 
 /* --- Left Column: 3D Canvas --- */
-.canvas-container {
+.canvas-container1 {
   position: sticky; /* This is the key! */
   top: 0;
   height: 100vh; /* It will always be the full height of the screen */
 }
 
 /* --- Right Column: Scrollable Content --- */
-.content-container {
+.content-container1 {
   /* This column is the one that actually scrolls */
   overflow-y: auto; 
 }
 
-.page-section {
+.page-section1 {
   height: 100vh; /* Each content section is the full height of the viewport */
   display: flex;
   flex-direction: column;
@@ -40,26 +40,26 @@ body {
   box-sizing: border-box;
 }
 
-#home {
+#home1 {
   background-color: #f0f8ff; /* AliceBlue */
 }
 
-#about {
+#about1 {
   background-color: #f5fffa; /* MintCream */
 }
 
-h1 {
+.h11 {
   font-size: 3.5rem;
   margin-bottom: 1rem;
 }
 
-p {
+.p1 {
   font-size: 1.2rem;
   line-height: 1.6;
   max-width: 600px;
 }
 
-.arrow-down {
+.arrow-down1 {
   font-size: 3rem;
   margin-top: 2rem;
   color: #aaa;

@@ -34,8 +34,8 @@ export default function App() {
   }, [scene]);
 
   return (
-    <div className="app-container" ref={containerRef}>
-      <div className="canvas-container">
+    <div className="app-container1" ref={containerRef}>
+      <div className="canvas-container1">
         <Canvas dpr={[1, 2]} shadows camera={{ fov: 45 }}>
           <Stage environment="city" intensity={0.6} adjustCamera={false}>
             <primitive object={scene} scale={1} rotation-y={Math.PI / 2} />
@@ -43,14 +43,14 @@ export default function App() {
         </Canvas>
       </div>
 
-      <div className="content-container">
-        <section className="page-section" id="home">
-          <h1>The Journey Begins</h1>
-          <p>Scroll down to rotate the car.</p>
+      <div className="content-container1">
+        <section className="page-section1" id="home1">
+          <h1 class="h11">The Journey Begins</h1>
+          <p class="p1">Scroll down to rotate the car.</p>
         </section>
-        <section className="page-section" id="about">
-          <h1>A New Perspective</h1>
-          <p>The rotation is complete.</p>
+        <section className="page-section1" id="about1">
+          <h1 class="h11">A New Perspective</h1>
+          <p class="p1">The rotation is complete.</p>
         </section>
       </div>
     </div>

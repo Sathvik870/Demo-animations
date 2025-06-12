@@ -1,0 +1,64 @@
+/* src/App.css */
+
+/* --- Section 1: The Full-Screen Overlay Layout --- */
+.three-d-section {
+  height: 200vh;
+  width: 100vw;
+  
+  /* Use a single-cell grid to stack children on top of each other */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+/* Both children will live in the same grid cell */
+.canvas-container1,
+.content-container1 {
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+  width: 100%;
+}
+
+/* The 3D Canvas (BOTTOM LAYER) */
+.canvas-container1 {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 1; /* Sits in the back */
+  background-color: #111827;
+}
+
+/* The Content Container (TOP LAYER) */
+.content-container1 {
+  z-index: 2; /* Sits on top */
+  
+  /* --- THIS IS THE CHANGE --- */
+  /* This makes the container itself invisible and non-interactive,
+     so it doesn't block mouse events or hide the car. */
+  pointer-events: none; 
+}
+
+/* --- ALL STYLING FOR TEXT (.page-section1, h1, p) IS REMOVED --- */
+/* Since there is no text in Section 1, these styles are no longer needed. */
+
+
+/* --- Section 2 & 3 are unchanged --- */
+.hover-section {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.hover-content {
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 2rem 3rem;
+  border-radius: 15px;
+}
+/* ... etc. */

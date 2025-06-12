@@ -1,0 +1,165 @@
+/* 
+  STEP 1: Import your custom font.
+  You must have the font file in your project for this to work.
+  The path is relative to this CSS file.
+*/
+
+
+/* src/components/LayeredLandingPage.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@font-face {
+  font-family: 'Hanseif';
+  src: url('../../src/assets/fonts/Hansief.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@keyframes slide-right {
+  0% {
+    /* Start completely off-screen to the left */
+    transform: translateX(-100%);
+  }
+  100% {
+    /* End completely off-screen to the right */
+    transform: translateX(100vw); /* 100vw means 100% of the viewport width */
+  }
+}
+@keyframes heartbeat {
+  0% {
+    /* Start at normal size, but keep it centered! */
+    transform: translate(-50%, -50%) scale(1);
+  }
+  25% {
+    /* The first, bigger beat "LUB" */
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  30% {
+    /* Quickly return to normal */
+    transform: translate(-50%, -50%) scale(1);
+  }
+  45% {
+    /* The second, smaller beat "DUB" */
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+  60% {
+    /* Return to normal again */
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    /* Stay at normal size for the rest of the duration (the pause) */
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+.landing-container {
+  background-image: url('../../src/assets/images/background.png');
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Helper for positioning elements that are STILL centered */
+.foreground-text {
+  position: absolute;
+  top: 60%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+/* --- THE SPECIFIC LAYERS (with your requested changes) --- */
+
+/* Layer 2: The Background Text */
+.background-text {
+  /* This part is new for top-left positioning */
+  position: absolute;
+  top: 3rem;  /* A little space from the top edge */
+  left: 2rem; /* A little space from the left edge */
+  
+  /* We removed the centering transform and full width */
+  text-align: left; /* Align text to the left */
+
+  /* The font styling remains the same */
+  font-family: 'Hanseif', sans-serif;
+  font-size: 10vw;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  z-index: 10;
+  white-space: nowrap; 
+  
+  /* Apply the animation here */
+  animation: slide-right 25s linear infinite; 
+}
+
+/* Layer 3: The Middle Image */
+.middle-image {
+  /* This part is new to make the image fill the screen */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  /* This is the key property! It makes the image cover the area
+     without stretching or distorting, just like 'background-size: cover'. */
+  object-fit: cover;
+  
+  /* We removed the centering transform and max-width */
+  z-index: 20;
+}
+
+/* Layer 4: The Foreground Text (No changes needed here) */
+.foreground-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 6vw;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  font-weight: 700;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  z-index: 30;
+}
+.navbar {
+  position: absolute;
+  top: 5vh;
+  left: 30%;
+  width: 100%;
+  
+  /* Make sure navbar is on top of all other layers */
+  z-index: 100;
+
+  /* Use flexbox to position logo and links */
+  display: flex;
+  justify-content: space-between; /* Pushes logo to left, links to right */
+  align-items: center; /* Vertically aligns them in the middle */
+  
+  /* Add some padding so content isn't stuck to the edges */
+  padding: 1.5rem 3rem;
+
+  /* This is important! It ensures padding doesn't add to the total width */
+  box-sizing: border-box; 
+}
+.nav-links {
+  display: flex; /* Puts the links in a row */
+  list-style: none; /* Removes bullet points */
+  margin: 0;
+  padding: 0;
+  gap: 10rem; /* Modern way to add space between links */
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none; /* Removes the underline */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 400; /* Regular weight for links */
+  transition: opacity 0.3s ease; /* Smooth hover effect */
+}
+
+.nav-links a:hover {
+  opacity: 0.7; /* Fades the link slightly on hover */
+}
