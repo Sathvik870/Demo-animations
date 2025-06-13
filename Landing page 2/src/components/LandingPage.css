@@ -1,0 +1,150 @@
+/* Layer 1: The Base Container */
+.landing-container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Layer 2: The Content Layer */
+.content-layer {
+  text-align: center;
+  color: white;
+  z-index: 1;
+}
+
+/* --- ANIMATION STYLES FOR CONTENT --- */
+
+/* BEFORE the animation (default state) */
+.content-layer h2 {
+  font-family: 'Decaydence', sans-serif;
+  font-size: 5rem;
+  font-weight: normal;
+  margin: 0;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  
+  /* Start transparent and moved up */
+  opacity: 0;
+  transform: translateY(-50px);
+  /* Define the smooth transition for the animation */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.content-layer p {
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+  
+  /* Start transparent */
+  opacity: 0;
+  /* Define the transition and add a delay */
+  transition: opacity 0.8s ease-in 0.5s; /* Delay is added here */
+}
+
+.content-layer button {
+  margin-top: 20px;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: 2px solid white;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+  backdrop-filter: blur(5px);
+  
+  /* Start transparent */
+  opacity: 0;
+  /* Define all transitions and delays in one line */
+  transition: opacity 0.8s ease-in 0.7s, background-color 0.3s ease, color 0.3s ease;
+}
+
+.content-layer button:hover {
+  background-color: white;
+  color: black;
+}
+
+/* AFTER the animation (when .visible class is added to parent) */
+
+/* THIS IS THE RULE THAT WAS MISSING */
+.content-layer.visible h2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.content-layer.visible p,
+.content-layer.visible button {
+  opacity: 1;
+}
+
+/* --- Layer 3 and Keyframes remain unchanged --- */
+.intro-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  z-index: 10;
+  -webkit-mask-image: url('../assets/images/layer-3-intro.png');
+  mask-image: url('../assets/images/layer-3-intro.png');
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100%;
+  mask-size: 100%;
+  animation: 
+    zoomOutMask 5s ease-out 1s forwards, 
+    fadeOutOverlay 5s ease-out 1s forwards;
+}
+
+@keyframes fadeOutOverlay {
+  0% { opacity: 1; } 100% { opacity: 0; pointer-events: none; }
+}
+
+@keyframes zoomOutMask {
+  0% { -webkit-mask-size: 100%; mask-size: 100%; }
+  100% { -webkit-mask-size: 8000%; mask-size: 8000%; }
+}
+.navbar {
+  position: absolute;
+  top: 2vh;
+  left: 17%;
+  width: 100%;
+  
+  /* Make sure navbar is on top of all other layers */
+  z-index: 100;
+
+  /* Use flexbox to position logo and links */
+  display: flex;
+  justify-content: space-between; /* Pushes logo to left, links to right */
+  align-items: center; 
+  padding: 1.5rem 3rem;
+
+  /* This is important! It ensures padding doesn't add to the total width */
+  box-sizing: border-box; 
+}
+.nav-links {
+  display: flex; /* Puts the links in a row */
+  list-style: none; /* Removes bullet points */
+  margin: 0;
+  padding: 0;
+  gap: 10rem; /* Modern way to add space between links */
+}
+
+.nav-links a {
+  color: black;
+  text-decoration: none; /* Removes the underline */
+  font-family: 'Montserrat', sans-serif;
+  font-size: rem;
+  font-weight: 400; /* Regular weight for links */
+  transition: opacity 0.3s ease; /* Smooth hover effect */
+}
+
+.nav-links a:hover {
+  opacity: 0.7; /* Fades the link slightly on hover */
+}
